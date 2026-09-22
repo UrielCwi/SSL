@@ -23,17 +23,15 @@ int esEstadoAceptacion(int estado) {
 /* Validador general de la cadena con el autómata */
 // AUTOMATA HECHO A MANO TABLA HECHA A MANO
 int esPalabra(const char *s) {
-    static const int tt[9][8] = {
+    static const int tt[7][8] = {
         /* [+-]  0  1-7 8-9 A-F  x   @  otro */
-        {   1,   2,  5,  5,  8,  8,  8,   8 }, /* 0: Inicial    */
-        {   8,   8,  5,  5,  8,  8,  8,   8 }, /* 1: CheckSigno */
-        {   8,   6,  7,  8,  8,  3,  0,   8 }, /* 2: CheckDel0  */
-        {   8,   6,  4,  4,  4,  8,  8,   8 }, /* 3: Hexa1      */
-        {   8,   4,  4,  4,  4,  8,  0,   8 }, /* 4: Hexa2      */
-        {   8,   5,  5,  5,  8,  8,  0,   8 }, /* 5: Decimal    */
-        {   8,   8,  8,  8,  8,  8,  0,   8 }, /* 6: Check2     */
-        {   8,   7,  7,  8,  8,  8,  0,   8 }, /* 7: Octal      */
-        {   8,   8,  8,  8,  8,  8,  8,   8 }  /* 8: Fallo      */
+        {   1,   2,  4,  4,  6,  6,  6,   6 }, /* 0: Inicial    */
+        {   6,   6,  4,  4,  6,  6,  6,   6 }, /* 1: CheckSigno */
+        {   6,   5,  5,  6,  6,  3,  0,   6 }, /* 2: CheckDel0  */
+        {   6,   3,  3,  3,  3,  6,  0,   6 }, /* 3: Hexa2      */
+        {   6,   5,  5,  5,  6,  6,  0,   6 }, /* 4: Decimal    */
+        {   6,   5,  5,  6,  6,  6,  0,   6 }, /* 5: Octal      */
+        {   6,   6,  6,  6,  6,  6,  6,   6 }  /* 6: Fallo      */
     };
 
     int estado = 0, i = 0;
@@ -42,7 +40,7 @@ int esPalabra(const char *s) {
     while (s[i] != '\0') {
         int col = columna((unsigned char)s[i]);
         estado = tt[estado][col];
-        if (estado == 8) return 0;
+        if (estado == 6) return 0;
         i++;
     }
 
