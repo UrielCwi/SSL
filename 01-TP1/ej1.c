@@ -23,15 +23,16 @@ int esEstadoAceptacion(int estado) {
 /* Validador general de la cadena con el autómata */
 // AUTOMATA HECHO A MANO TABLA HECHA A MANO
 int esPalabra(const char *s) {
-    static const int tt[7][8] = {
-        /* [+-]  0  1-7 8-9 A-F  x   @  otro */
-        {   1,   2,  4,  4,  6,  6,  6,   6 }, /* 0: Inicial    */
-        {   6,   6,  4,  4,  6,  6,  6,   6 }, /* 1: CheckSigno */
-        {   6,   5,  5,  6,  6,  3,  0,   6 }, /* 2: CheckDel0  */
-        {   6,   3,  3,  3,  3,  6,  0,   6 }, /* 3: Hexa2      */
-        {   6,   5,  5,  5,  6,  6,  0,   6 }, /* 4: Decimal    */
-        {   6,   5,  5,  6,  6,  6,  0,   6 }, /* 5: Octal      */
-        {   6,   6,  6,  6,  6,  6,  6,   6 }  /* 6: Fallo      */
+    static const int tt[8][7] = {
+      // +-, 0, 1-7, 8-9, A-F, x, @
+    /*0*/{1,  3,  2,   2,   7,  7, 0},
+    /*1*/{7,  7,  2,   2,   7,  7, 7},
+    /*2*/{7,  2,  2,   2,   7,  7, 0},
+    /*3*/{7,  4,  4,   7,   7,  5, 0},
+    /*4*/{7,  4,  4,   7,   7,  7, 0},
+    /*5*/{7,  6,  6,   6,   6,  7, 7},
+    /*6*/{7,  6,  6,   6,   6,  7, 0},
+    /*7*/{7,  7,  7,   7,   7,  7, 0}
     };
 
     int estado = 0, i = 0;
@@ -40,7 +41,7 @@ int esPalabra(const char *s) {
     while (s[i] != '\0') {
         int col = columna((unsigned char)s[i]);
         estado = tt[estado][col];
-        if (estado == 6) return 0;
+        if (estado == 7) return 0;
         i++;
     }
 
