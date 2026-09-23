@@ -4,7 +4,6 @@
 #define NUMBER '0' /* señal de que un número se encontró */
 #define MAXVAL 100 /* máximo tamaño de la pila de val */
 
-//FUNCION GEMINI
 int columna(int c)
 {
     if (isdigit(c)) c = NUMBER;
@@ -21,7 +20,7 @@ int columna(int c)
     }
 }
 
-//FUNCION GEMINI
+//FUNCION PARECIDA AL EJERCICIO 1 VISTO EN CLASE
 int validarExpresion(const char *s) {
     /*AFD PARA VERIFICAR NUMEROS*/
     static const int tt[4][4] = {
@@ -47,14 +46,12 @@ int validarExpresion(const char *s) {
     return (estado == 1);
 }
 
-//FUNCION GEMINI
 int precedencia(char op) {
     if (op == '*') return 2;
     if (op == '+' || op == '-') return 1;
     return 0;
 }
 
-//FUNCION GEMINI
 /*La funcion de transformacion de infijo a postfijo basicamente recorre la cadena, apila los numeros en una pila y los operadores en otra,
 cuando encuentra un operador con precedencia menor o igual al operador en la cima de la pila, desapila los operadores y los agrega a la salida
 hasta que encuentra un operador con menor precedencia o la pila queda vacia. Al final, vacia la pila de operadores a la salida.*/
@@ -136,7 +133,6 @@ int calculadoraRPN(char *rpn) {
     return pop();
 }
 
-//FUNCION GEMINI (es el main ya fue no es para tanto)
 int main(void) {
     char infijo[MAX];
     char rpn[MAX];
