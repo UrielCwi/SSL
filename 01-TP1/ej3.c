@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
 #define MAX 500 /* máx tamaño de operando u operador */
 #define NUMBER '0' /* señal de que un número se encontró */
@@ -11,7 +12,8 @@ int columna(int c)
     {
         case NUMBER:
             return 0;
-        case '+' || '-':
+        case '+':
+        case '-':
             return 1;
         case '*':
             return 2;

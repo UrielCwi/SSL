@@ -49,7 +49,6 @@ int esPalabra(const char *s) {
 }
 
 /* Procesa y cuenta los grupos si la cadena es léxicamente válida */
-//FUNCION GEMINI
 void clasificarYContar(char *cadena) {
     int cantDecimales = 0;
     int cantOctales = 0;
