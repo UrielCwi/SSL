@@ -5,14 +5,14 @@
 
 int atoi(char s[])
 {
-    int i, n, sign;
+    int i, n;
     for (i = 0; isspace(s[i]); i++) //BORRAR ESPACIOS
         ;
     // Convierte los caracteres numéricos
     for (n = 0; isdigit(s[i]); i++)
         n = 10 * n + (s[i] - '0');
 
-    return sign * n;
+    return n;
 }
 
 int main(void)
