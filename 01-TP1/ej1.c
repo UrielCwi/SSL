@@ -87,7 +87,7 @@ int main(void) {
         strcpy(copia, palabra);
         clasificarYContar(copia);
     } else {
-        printf("Resultado: ERROR LEXICO (la cadena NO se reconoce).\n");
+        printf("Resultado: ERROR LEXICO (al menos un digito NO es reconocible).\n");
     }
 
     return 0;
