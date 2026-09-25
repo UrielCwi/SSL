@@ -79,7 +79,8 @@ int main(void) {
     char copia[MAX];
 
     printf("Ingrese la cadena de numeros separados por '@' (ej: +45@077@0x1F@120): ");
-    gets(palabra);
+    fgets(palabra, MAX, stdin);
+    palabra[strcspn(palabra, "\n")] = '\0';
 
     if (esPalabra(palabra)) {
         printf("Resultado: La cadena SE RECONOCE (pertenece al lenguaje).\n");

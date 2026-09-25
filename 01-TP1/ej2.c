@@ -14,6 +14,21 @@ int atoi(char s[])
 
     return n;
 }
+int esValido(char s[])
+{
+    int i;
+    int valido = 1;
+
+    for (i = 0; s[i] != '\0'; i++) {
+        /* Cualquier caracter que no sea digito corta el proceso */
+        if (!isdigit((unsigned char)s[i])) {
+            valido = 0;
+            break;
+        }
+    }
+
+    return valido;
+}
 
 int main(void)
 {
@@ -21,6 +36,11 @@ int main(void)
 
     printf("Ingrese un numero entero: ");
     gets(line);
+
+     if (!esValido(line)) {
+        printf("Error: caracter no reconocido, se corta el proceso.\n");
+        return 1;
+    }
 
     int numero = atoi(line);
 
